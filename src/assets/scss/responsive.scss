@@ -4,7 +4,7 @@
   }
 
   .content-dashboard {
-    .wrapper {
+    .main-wrapper {
       flex: none;
     }
     .chart-container {
@@ -64,7 +64,7 @@
       }
     }
 
-    > .wrapper {
+    > .main-wrapper {
       padding-top: 0;
     }
   }
@@ -277,7 +277,7 @@
     }
   }
 
-  :is(.filters, .selector, .list, .wrapper .list .row, .list
+  :is(.filters, .selector, .list, .main-wrapper .list .row, .list
       li, .item-update-failed, .progress, .col-chart, .report, .summary, .summary ul, .summary li) {
     width: 100%;
     max-width: 100%;
@@ -323,7 +323,7 @@
   .content {
     overflow-y: auto;
 
-    > .wrapper {
+    > .main-wrapper {
       overflow: unset;
       padding: 0 0 1.5rem;
       gap: 2rem;
@@ -396,7 +396,7 @@
       }
     }
 
-    .wrapper {
+    .main-wrapper {
       flex-wrap: wrap;
       max-width: 100%;
     }
@@ -545,7 +545,7 @@
       border-radius: 0;
     }
 
-    .wrapper {
+    .main-wrapper {
       padding: 0;
       flex-direction: column;
       gap: 1rem;
@@ -620,7 +620,7 @@
     }
   }
   .content-main {
-    > .wrapper {
+    > .main-wrapper {
       overflow: visible;
     }
 
@@ -1210,7 +1210,7 @@
       }
     }
 
-    > .wrapper {
+    > .main-wrapper {
       gap: 1rem;
 
       > .tabs {
@@ -1599,7 +1599,7 @@
   }
 
   .content-settings {
-    .wrapper {
+    .main-wrapper {
       gap: 1rem;
     }
 

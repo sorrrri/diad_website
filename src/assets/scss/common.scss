@@ -10,19 +10,6 @@
   src: url("../fonts/Roboto-Medium.ttf") format("truetype");
 }
 
-@font-face {
-  font-family: "NanumBarunGothic";
-  src: url("../fonts/NanumBarunGothicRegular.eot"), url("../fonts/NanumBarunGothicRegular.ttf") format("truetype"),
-    url("../fonts/NanumBarunGothicRegular.woff") format("woff");
-}
-
-@font-face {
-  font-family: "NanumBarunGothicLight";
-  font-weight: 300;
-  src: url("../fonts/NanumBarunGothicLight.eot"), url("../fonts/NanumBarunGothicLight.ttf") format("truetype"),
-    url("../fonts/NanumBarunGothicLight.woff") format("woff");
-}
-
 // Modno Bright
 $levis-clear-purple: #dcdfe4;
 $auro-peppermint: #d5dbe0;
@@ -39,8 +26,8 @@ $farrownball-drawing-room-blue: #2e3548;
 // Blue tone
 $clark-kensington-stowe-mountain: #717593;
 
-$primary-color: #7682f8;
-$main-color: #5b54c6;
+$main-color: #185bb7;
+$primary-color: #185bb7;
 $secondary-color: #f2f1ff;
 $dark-primary-color: #27292d;
 $dark-tertiary-color: #85899a;
@@ -62,10 +49,9 @@ html {
 }
 
 body {
-  overflow: hidden;
   color: #333;
   width: 100%;
-  font: 14px "Roboto", "NanumBarunGothic";
+  font: 14px "Roboto", "Noto Sans KR";
 
   img {
     display: block;
@@ -78,14 +64,21 @@ body {
 
   small {
     display: inline-flex;
-    font-family: "RobotoMedium", "NanumBarunGothic", sans-serif;
+    font-family: "RobotoMedium", "Noto Sans KR", sans-serif;
   }
 
   address {
     font-style: normal;
   }
 
-  :is(h1, h2, h3, h4, h5, p) {
+  h1, h2, h3, h4, h5 {
+    margin: 0;
+    line-height: 1.25;
+    word-break: break-all;
+    font-weight: 700;
+  } 
+  
+  p {
     margin: 0;
     line-height: 1.25;
     word-break: break-all;
@@ -114,7 +107,7 @@ body {
     background: transparent;
     border-radius: 0.25rem;
     white-space: nowrap;
-    font: 14px/1 "Roboto", "NanumBarunGothic";
+    font: 14px/1 "Roboto", "Noto Sans KR";
     transition: background 0.2s;
     cursor: pointer;
 
@@ -179,7 +172,7 @@ input {
     border-radius: 3px;
     padding: 0.5rem 0.35rem;
     position: relative;
-    font: 14px/1 "NanumBarunGothic";
+    font: 14px/1 "Noto Sans KR";
   }
 
   &[type="password"] {
@@ -197,7 +190,7 @@ textarea {
   border-radius: 0.25rem;
   padding: 0.5rem;
   resize: none;
-  font: 14px/1 "NanumBarunGothic";
+  font: 14px/1 "Noto Sans KR";
 
   &:focus {
     border-color: $primary-color;
@@ -275,12 +268,7 @@ ul {
 
 .container {
   padding: 0;
-  /* bootstrap */
   width: 100%;
-  height: 100%;
-  height: calc(var(--vh, 1vh) * 100);
-  display: flex;
-  flex-direction: column;
 }
 
 .input {
@@ -403,6 +391,14 @@ ul {
   background-size: 14px 14px;
   background-position: center left 0.75rem;
   padding-left: 1.75rem !important;
+}
+
+.ico-phone {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='rgb(73,81,88)' d='M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 17px 17px;
+  background-position: center left;
+  padding-left: 1.25rem !important;
 }
 
 .ico-refresh {
@@ -542,7 +538,7 @@ aside {
   justify-content: space-between;
   align-items: center;
   h1 {
-    font: normal 2rem/1 "NanumBarunGothic";
+    font: normal 2rem/1 "Noto Sans KR";
     flex: 1 1 auto;
   }
 }
@@ -923,7 +919,7 @@ input[type="radio"] {
   }
   .input-file-trigger {
     display: block;
-    font: normal 13px/1 "NanumBarunGothic";
+    font: normal 13px/1 "Noto Sans KR";
     padding: 0.5rem;
     background: $clark-kensington-stowe-mountain;
     border-radius: 0.25rem;
@@ -988,7 +984,7 @@ input[type="radio"] {
     height: $input-height;
     -webkit-appearance: none;
     padding: 0 1.5rem 0 0.35rem;
-    font: 14px/1 "NanumBarunGothic";
+    font: 14px/1 "Noto Sans KR";
     background-color: white;
     color: #333;
     outline: 0;
@@ -1055,7 +1051,7 @@ input[type="radio"] {
     cursor: pointer;
   }
   .title {
-    font: 14px/1 "Roboto", "NanumsquareRegular";
+    font: 14px/1 "Roboto", "Noto Sans KR";
     color: $kelly-moore-camp-muir !important;
     word-break: keep-all;
     border-radius: 0;
@@ -1334,7 +1330,7 @@ input[type="radio"] {
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 50%;
-    font: 13px/1.5 "NanumBarunGothicLight";
+    font: 13px/1.5 "Noto Sans KR";
     transition: all 0.2s;
     z-index: -1;
   }
@@ -1425,7 +1421,7 @@ input[type="radio"] {
   background-color: #333;
   color: white;
   text-align: left;
-  font: 13px/1.5 "NanumBarunGothicLight";
+  font: 13px/1.5 "Noto Sans KR";
   transform: translate(0, 13px);
   transition: all 0.2s;
 

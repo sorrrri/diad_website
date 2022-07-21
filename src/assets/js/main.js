@@ -8,18 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const main = document.querySelector("main");
+  const header = document.querySelector(".main-header");
   const content = document.querySelector(".content");
-  const wrapper = document.querySelector(".content > .wrapper");
   const scrollToTop = document.createElement("div");
   scrollToTop.classList.add("scroll-to-top");
-  wrapper.appendChild(scrollToTop);
+  main.appendChild(scrollToTop);
 
   let lastScrollTop = 0;
 
-  wrapper.addEventListener("scroll", () => {
-    let currentScrollTop = wrapper.scrollTop;
+  window.addEventListener("scroll", () => {
+    let currentScrollTop = window.scrollY;
 
     if (currentScrollTop > 50) {
+      header.classList.add("scroll")
+
+
       if (currentScrollTop > lastScrollTop) {
         //Scroll down
         scrollToTop.classList.remove("is-active");
@@ -29,15 +32,41 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       lastScrollTop = currentScrollTop;
-    } else {
+    } else {      
+      header.classList.remove("scroll")
       scrollToTop.classList.remove("is-active");
     }
   });
 
   scrollToTop.addEventListener("click", () => {
-    wrapper.scrollTo({top: 0, behavior: "smooth"});
+    window.scrollTo({top: 0, behavior: "smooth"});
     content.scrollTo({top: 0, behavior: "smooth"});
   });
+
+
+  /* =====================================================
+       Observer
+  ===================================================== */
+  console.log("test")
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0) {
+        entry.target.classList.add("is-active")
+      } else {
+        entry.target.classList.remove("is-active")
+      }
+    })
+  })
+
+  const sections = document.querySelectorAll("main section");
+  sections.forEach(section => {
+    io.observe(section)
+  })
+
+  /* =====================================================
+       Top menus
+  ===================================================== */
+  // const lnb = document.querySelector(".lnb")
 
   /* =====================================================
        Tooltip
@@ -114,18 +143,39 @@ document.addEventListener("DOMContentLoaded", () => {
   if (toggles) {
     toggles.forEach(toggle => {
       toggle.addEventListener("click", event => {
-        const button = event.target;
+        const button = event.target;C
         button.classList.toggle("is-active");
       });
     });
   }
 
   const hamburgMenu = document.querySelector(".hamburg-menu");
-  hamburgMenu.addEventListener("click", () => {
-    const aside = document.querySelector("aside");
-    hamburgMenu.classList.toggle("is-active");
-    aside.classList.toggle("is-active");
-  });
+  if(hamburgMenu) {
+    hamburgMenu.addEventListener("click", () => {
+      const aside = document.querySelector("aside");
+      hamburgMenu.classList.toggle("is-active");
+      aside.classList.toggle("is-active");
+    });
+  }
 
-  
+  /* =====================================================
+       Dropdown
+  ===================================================== */
+  const dropdown = document.querySelector(".dropdown");
+  dropdown.addEventListener("click", (event) => {
+    dropdown.classList.toggle("is-active")
+  })
+
+  /* =====================================================
+       Local Navigation Bar
+  ===================================================== */
+  const lnb = document.querySelector(".lnb");
+  const subs = document.querySelector(".subs");
+  lnb.addEventListener("mouseenter", () => {
+    subs.classList.add("is-active")
+
+    subs.addEventListener("mouseleave", () => {
+      subs.classList.remove("is-active")
+    })
+  })
 });
