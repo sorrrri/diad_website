@@ -20,21 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentScrollTop = window.scrollY;
 
     if (currentScrollTop > 50) {
-      header.classList.add("scroll")
 
 
       if (currentScrollTop > lastScrollTop) {
         //Scroll down
-        scrollToTop.classList.remove("is-active");
+        scrollToTop.classList.remove("active");
       } else {
         //Scroll up
-        scrollToTop.classList.add("is-active");
+        scrollToTop.classList.add("active");
       }
 
       lastScrollTop = currentScrollTop;
     } else {      
-      header.classList.remove("scroll")
-      scrollToTop.classList.remove("is-active");
+      scrollToTop.classList.remove("active");
+    }
+
+    if (matchMedia("screen and (min-width: 481px)").matches) {
+      currentScrollTop > 50 ? header.classList.add("scroll") : header.classList.remove("scroll")
     }
   });
 
@@ -47,13 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =====================================================
        Observer
   ===================================================== */
-  console.log("test")
   const io = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
-        entry.target.classList.add("is-active")
+        entry.target.classList.add("active")
       } else {
-        entry.target.classList.remove("is-active")
+        entry.target.classList.remove("active")
       }
     })
   })
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   tooltips.forEach((tooltip) => {
   //     tooltip.addEventListener("click", (event) => {
   //       const content = event.target.nextElementSibling;
-  //       content.classList.toggle("is-active");
+  //       content.classList.toggle("active");
   //     });
   //   });
   // }
@@ -119,20 +120,20 @@ document.addEventListener("DOMContentLoaded", () => {
     let menuIndex = [...tabs].indexOf(event.target);
 
     tabs.forEach(tab => {
-      [...tabs].indexOf(tab) === menuIndex ? tab.classList.add("is-active") : tab.classList.remove("is-active");
+      [...tabs].indexOf(tab) === menuIndex ? tab.classList.add("active") : tab.classList.remove("active");
     });
 
     tabContents.forEach(content => {
-      [...tabContents].indexOf(content) === 0 && content.classList.add("is-active");
+      [...tabContents].indexOf(content) === 0 && content.classList.add("active");
       [...tabContents].indexOf(content) === menuIndex
-        ? content.classList.add("is-active")
-        : content.classList.remove("is-active");
+        ? content.classList.add("active")
+        : content.classList.remove("active");
     });
   };
 
   tabs.forEach(tab => {
-    [...tabs][0].classList.add("is-active");
-    [...tabContents][0].classList.add("is-active");
+    [...tabs][0].classList.add("active");
+    [...tabContents][0].classList.add("active");
     tab.addEventListener("click", showTabContent);
   });
 
@@ -143,8 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (toggles) {
     toggles.forEach(toggle => {
       toggle.addEventListener("click", event => {
-        const button = event.target;C
-        button.classList.toggle("is-active");
+        const button = event.target;
+        button.classList.toggle("active");
       });
     });
   }
@@ -153,8 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if(hamburgMenu) {
     hamburgMenu.addEventListener("click", () => {
       const aside = document.querySelector("aside");
-      hamburgMenu.classList.toggle("is-active");
-      aside.classList.toggle("is-active");
+      hamburgMenu.classList.toggle("active");
+      aside.classList.toggle("active");
     });
   }
 
@@ -163,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ===================================================== */
   const dropdown = document.querySelector(".dropdown");
   dropdown.addEventListener("click", (event) => {
-    dropdown.classList.toggle("is-active")
+    dropdown.classList.toggle("active")
   })
 
   /* =====================================================
@@ -172,10 +173,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const lnb = document.querySelector(".lnb");
   const subs = document.querySelector(".subs");
   lnb.addEventListener("mouseenter", () => {
-    subs.classList.add("is-active")
+    subs.classList.add("active")
 
     subs.addEventListener("mouseleave", () => {
-      subs.classList.remove("is-active")
+      subs.classList.remove("active")
     })
   })
 });
