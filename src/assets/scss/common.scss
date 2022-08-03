@@ -1712,3 +1712,14 @@ input[type="radio"] {
     }
   }
 }
+
+
+@media screen and (max-width: 480px) {
+  .scroll-to-top {
+    right: 1rem;
+    
+    &.active {
+      bottom: 1rem
+    }
+  }
+}
