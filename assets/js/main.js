@@ -20,24 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentScrollTop = window.scrollY;
 
     if (currentScrollTop > 50) {
-
-
       if (currentScrollTop > lastScrollTop) {
         //Scroll down
         scrollToTop.classList.remove("active");
+        header.classList.add("scroll")
       } else {
         //Scroll up
         scrollToTop.classList.add("active");
+        header.classList.remove("scroll")
       }
 
       lastScrollTop = currentScrollTop;
-    } else {      
+    } else {
       scrollToTop.classList.remove("active");
     }
 
-    if (matchMedia("screen and (min-width: 481px)").matches) {
-      currentScrollTop > 50 ? header.classList.add("scroll") : header.classList.remove("scroll")
-    }
   });
 
   scrollToTop.addEventListener("click", () => {
@@ -45,29 +42,23 @@ document.addEventListener("DOMContentLoaded", () => {
     content.scrollTo({top: 0, behavior: "smooth"});
   });
 
-
   /* =====================================================
        Observer
   ===================================================== */
   const io = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
-        entry.target.classList.add("active")
+        entry.target.classList.add("active");
       } else {
-        entry.target.classList.remove("active")
+        entry.target.classList.remove("active");
       }
-    })
-  })
+    });
+  });
 
   const sections = document.querySelectorAll("main section");
   sections.forEach(section => {
-    io.observe(section)
-  })
-
-  /* =====================================================
-       Top menus
-  ===================================================== */
-  // const lnb = document.querySelector(".lnb")
+    io.observe(section);
+  });
 
   /* =====================================================
        Tooltip
@@ -151,9 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const hamburgMenu = document.querySelector(".hamburg-menu");
-  if(hamburgMenu) {
+  if (hamburgMenu) {
     hamburgMenu.addEventListener("click", () => {
-      const aside = document.querySelector("aside");
+      const aside = document.querySelector(".subs");
       hamburgMenu.classList.toggle("active");
       aside.classList.toggle("active");
     });
@@ -163,20 +154,31 @@ document.addEventListener("DOMContentLoaded", () => {
        Dropdown
   ===================================================== */
   const dropdown = document.querySelector(".dropdown");
-  dropdown.addEventListener("click", (event) => {
-    dropdown.classList.toggle("active")
-  })
+  dropdown.addEventListener("click", event => {
+    dropdown.classList.toggle("active");
+  });
 
   /* =====================================================
        Local Navigation Bar
   ===================================================== */
   const lnb = document.querySelector(".lnb");
   const subs = document.querySelector(".subs");
-  lnb.addEventListener("mouseenter", () => {
-    subs.classList.add("active")
 
-    subs.addEventListener("mouseleave", () => {
-      subs.classList.remove("active")
-    })
-  })
+  // Responsive Web
+  if (matchMedia("screen and (max-width: 480px)").matches) {
+    const submenus = subs.querySelectorAll("li");
+    submenus.forEach(sub => {
+      sub.addEventListener("click", event => {
+        event.target.classList.toggle("active");
+      });
+    });
+  } else {
+    lnb.addEventListener("mouseenter", () => {
+      subs.classList.add("active");
+
+      subs.addEventListener("mouseleave", () => {
+        subs.classList.remove("active");
+      });
+    });
+  }
 });
